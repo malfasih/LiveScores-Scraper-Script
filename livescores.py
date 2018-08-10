@@ -101,8 +101,6 @@ def pretty_print(lis_final, param = None):
 					pass
 			else:
 				pass
-	elif(param == '--json'):
-		print(lis_final)
 
 
 def main(args):	
@@ -115,7 +113,8 @@ def main(args):
 	#adicina objectos do tipo dicionario a uma lista, de acordo com os dados retirados do site
 	lis_final = get_today_games(content)
 
-		if(len(args)>1):
+	#Imprime na console os resultados. segundo parametro: active->jogos a decorrer ou terminados, not_active->jogos ainda por comecar
+	if(len(args)>1):
 		pretty_print(lis_final, args[1])
 	else:
 		pretty_print(lis_final)
