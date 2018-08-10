@@ -2,7 +2,7 @@
 #  -BeautifulSoup. urllib.request.
 #Usage:
 #  -Para executar o script basta escrever na linha de comandos:
-#		Sem parametro - Imprime todos os jogos da página:
+#		Sem parametro - Imprime todos os jogos da pagina:
 #			python livescores.py
 #		Com parametro -    --active -> apenas jogos finalizados ou a decorrer.  --not_active -> jogos ainda por iniciar.
 #			python livescores.py --active    /    python livescores.py --not_active
@@ -16,7 +16,7 @@ def check_hours_format(string):
 	#Valida o formato das horas.
 	# Aceita FT HT etc.
 	# Aceita 10:20,  20:30,  etc
-	# Nao aceita  10:20 Delay blablabla - Para casos em que o resultado não seja fiável.
+	# Nao aceita  10:20 Delay blablabla - Para casos em que o resultado nao seja fiavel.
 	if(len(string)>=5):
 		if(len(string)>7):
 			return False
@@ -29,8 +29,8 @@ def check_hours_format(string):
 		
 	return valid
 
-#Retorna uma lista com os jogos que estão presentes na página.
-# Disclaimer: Ainda não filtra só os jogos do dia actual.
+#Retorna uma lista com os jogos que estao presentes na pagina.
+# Disclaimer: Ainda nao filtra so os jogos do dia actual.
 def get_today_games(content):
 	lis_final = []
 	for elm in content:
@@ -58,7 +58,7 @@ def get_today_games(content):
 
 	return lis_final
 
-#Verifica se o resultado tem números . Serve para filtrar apenas jogos finalizados ou a decorrer na funcao pretty_print
+#Verifica se o resultado tem numeros . Serve para filtrar apenas jogos finalizados ou a decorrer na funcao pretty_print
 def has_numbers(string):
 	has_numbers = False
 	for c in string:
@@ -70,7 +70,7 @@ def has_numbers(string):
 			pass
 	return has_numbers
 
-#Função helper para imprimir de acordo com o parametro passado na console.
+#Funcao helper para imprimir de acordo com o parametro passado na console.
 def pretty_print(lis_final, param = None):
 	if(param==None):
 		for elm in lis_final:
@@ -101,6 +101,8 @@ def pretty_print(lis_final, param = None):
 					pass
 			else:
 				pass
+	elif(param == '--json'):
+		print(lis_final)
 
 
 def main(args):	
@@ -113,8 +115,7 @@ def main(args):
 	#adicina objectos do tipo dicionario a uma lista, de acordo com os dados retirados do site
 	lis_final = get_today_games(content)
 
-	#Imprime na console os resultados. segundo parametro: active->jogos a decorrer ou terminados, not_active->jogos ainda por começar
-	if(len(args)>1):
+		if(len(args)>1):
 		pretty_print(lis_final, args[1])
 	else:
 		pretty_print(lis_final)
