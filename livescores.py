@@ -10,6 +10,7 @@
 from bs4 import BeautifulSoup
 import urllib.request
 import sys
+import json
 
 def check_hours_format(string):
 	valid = True
@@ -102,7 +103,7 @@ def pretty_print(lis_final, param = None):
 			else:
 				pass
 	elif(param == '--json'):
-		print(lis_final)
+		print(json.dumps(lis_final))
 
 
 def main(args):	
