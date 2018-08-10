@@ -101,6 +101,8 @@ def pretty_print(lis_final, param = None):
 					pass
 			else:
 				pass
+	elif(param == '--json'):
+		print(lis_final)
 
 
 def main(args):	
